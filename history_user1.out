@@ -1,0 +1,5 @@
+touch ~/testfile
+chown root ~/testfile  
+~/chown_cap root ~/testfile 
+ls -l ~/testfile  
+exit

@@ -1,0 +1,12 @@
+/usr/bin/chage
+/usr/bin/gpasswd
+/usr/bin/newgrp
+/usr/bin/mount
+/usr/bin/umount
+/usr/bin/crontab
+/usr/bin/su
+/usr/bin/passwd
+/usr/bin/sudo
+/usr/sbin/unix_chkpwd
+/usr/sbin/grub2-set-bootflag
+/usr/sbin/pam_timestamp_check

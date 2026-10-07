@@ -1,0 +1,51 @@
+    1  history
+    2  dnf install -y git
+    3  it config --global user.name "DanielGrzhibovskii"
+    4  git config --global user.name "DanielGrzhibovskii"
+    5  git config --global user.email "danielgrzhibovskii@gmail.com"
+    6  groupadd students
+    7  useradd -u 1234 -m -G students user1
+    8  passwd user1
+    9  chage -M 90 user1
+   10  id user1
+   11  chage -l user1
+   12  find / -xdev -type f -perm -4000 2>/dev/null | tee ~/suid_files.out
+   13  ps -eo pid,ruid,euid,ruser,euser,args | awk 'NR==1 || ($3==0 && $2>=1000)' | tee ~/proc_monitor.out
+   14  cp /usr/bin/cat /home/user1/cat_suid
+   15  chown root:root /home/user1/cat_suid
+   16  chmod u+s /home/user1/cat_suid
+   17  ls -l /home/user1/cat_suid 
+   18  su - user1 -c 'cat /etc/shadow' 
+   19  su - user1 -c '/home/user1/cat_suid /etc/shadow | head -3'
+   20  cp /usr/bin/chown /home/user1/chown_cap
+   21  chown user1:user1 /home/user1/chown_cap
+   22  setcap cap_chown+ep /home/user1/chown_cap
+   23  getcap /home/user1/chown_cap
+   24  su - user1
+   25  visudo
+   26  visudo -c
+   27  timedatectl set-ntp false  
+   28  su - user1 -c 'sudo date -s "2026-10-08 12:00:00"'
+   29  date
+   30  su - user1 -c 'sudo -S date -s "2026-10-08 12:00:00"'
+   31  date
+   32  timedatectl set-ntp true
+   33  date
+   34  mkdir -p ~/mephi-linux-security-2026 && cd ~/mephi-linux-security-2026
+   35  history -a
+   36  history > history.out
+   37  tat /home/user1 > stat.out
+   38  stat /home/user1/cat_suid >> stat.out
+   39  stat /home/user1/chown_cap >> stat.out
+   40  getcap /home/user1/chown_cap > getcap.out
+   41  mv ~/suid_files.out ~/proc_monitor.out .
+   42  cp /etc/passwd /etc/shadow /etc/group /etc/sudoers .
+   43  chmod 644 shadow sudoers
+   44  stat /home/user1 > stat.out
+   45  cd ~/mephi-linux-security-2026
+   46  stat /home/user1 > stat.out
+   47  stat /home/user1/cat_suid >> stat.out
+   48  stat /home/user1/chown_cap >> stat.out
+   49  cat stat.out | grep -E 'Файл|Доступ: \('
+   50  history -a
+   51  history > history.out
